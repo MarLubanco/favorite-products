@@ -38,6 +38,14 @@ git clone https://github.com/MarLubanco/favorite-products.git
 cd favorite-products
 ```
 
+### Practices and Architecture
+
+```
+Clean Code
+Clean Architecture
+TDD
+```
+
 
 ### Run project
 
