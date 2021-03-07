@@ -5,6 +5,8 @@ import com.favoriteservice.repository.ClientRepository;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -30,8 +32,11 @@ public class ClienteService {
         return clientRepository.save(client);
     }
 
-    public void deleteById(Integer id) {
-        clientRepository.deleteById(id);
+    public void deleteById(Integer id) throws NotFoundException {
+        Client client = clientRepository.findById(id).orElseThrow(() -> new NotFoundException("Client not exist!"));
+        if(!ObjectUtils.isEmpty(client)) {
+            clientRepository.deleteById(id);
+        }
     }
 
     public List<Client> findAll() {
