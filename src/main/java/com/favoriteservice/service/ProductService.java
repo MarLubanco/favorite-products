@@ -24,10 +24,25 @@ public class ProductService {
     @Autowired
     private ClienteService clienteService;
 
+    /**
+     * Performs an integration with the LuizaLabs API to retrieve
+     * all products according to the page passed in the parameter
+     *
+     * @param page
+     * @return
+     */
     public PageResult findAllProductsByPage(Integer page) {
         return magaluClient.getProductByPage(page);
     }
 
+    /**
+     * Add a new product to a Client's favorite product list,
+     * validating that this product has already been added previously
+     * @param productId
+     * @param clientId
+     * @return
+     * @throws NotFoundException
+     */
     public Product saveProductFavoriteById(String productId, Integer clientId) throws NotFoundException {
         if(!isProductExistInClient(clientId, productId)) {
             ProductRequest product = magaluClient.getProductsById(productId);
@@ -44,6 +59,13 @@ public class ProductService {
         }
     }
 
+    /**
+     * Validates that this Client has already added the new product it is trying to add
+     * @param idClient
+     * @param idProduct
+     * @return
+     * @throws NotFoundException
+     */
     public boolean isProductExistInClient(Integer idClient, String idProduct) throws NotFoundException {
         return clienteService.findById(idClient).getProductList().stream()
                 .anyMatch(product -> product.getIdMagalu().equals(idProduct));
