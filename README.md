@@ -7,8 +7,10 @@ Application for stores, where the customer can view products registered and mark
 ```aidl
  Java 8
  Spring Boot
+ Spring Security
  Spring Cloud OpenFeign
  Hibernate
+ JPA
  Docker
  PostgreSQL
  Lombok
@@ -40,7 +42,7 @@ cd favorite-products
 ### Run project
 
 ```dockerfile
-docker pull marthome/favorite-product:1.0
+docker pull marthome/favorite-product:1.2
 
-docker run --name favorite-product -e USER_DATABASE=<user> -e PASSWORD_DATABASE=<password> -p 8080:8080 marthome/favorite-product:1.0
+docker run --name favorite-product -e USER_DATABASE=<user> -e PASSWORD_DATABASE=<password> -p 8080:8080 marthome/favorite-product:1.2
 ```
