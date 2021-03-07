@@ -28,7 +28,7 @@ http://localhost:8080/swagger-ui.html#/
 
 ```aidl
 PostgreSQL installed
-Java 11 installed
+Java 8 installed
 Docker installed
 ```
 
