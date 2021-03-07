@@ -27,7 +27,7 @@ public class Client {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Product> productList;
 }
